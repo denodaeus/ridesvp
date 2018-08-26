@@ -1,10 +1,10 @@
 {
   "public": {
-    "productName": "Product Name",
+    "productName": "RideSVP",
     "copyrightStartYear": "2018",
-    "twitterUsername": "product",
-    "facebookUsername": "product",
-    "productAddress": "1658 N. Milwaukee Ave., #393, Chicago, IL 60647"
+    "twitterUsername": "ridesvp",
+    "facebookUsername": "ridesvp",
+    "productAddress": "123 Any Street, Anytown USA 12345"
   },
   "private": {
     "MAIL_URL": "",
@@ -28,6 +28,6 @@
         "loginStyle": "popup"
       }
     },
-    "supportEmail": "Customer Support <support@product.com>"
+    "supportEmail": "Customer Support <support@ridesvp.com>"
   }
 }

@@ -20,12 +20,12 @@ seeder(Meteor.users, {
   environments: ['development', 'staging'],
   noLimit: true,
   data: [{
-    email: 'admin@admin.com',
-    password: 'password',
+    email: 'admin@ridesvp.com',
+    password: 'ridesvp123!',
     profile: {
       name: {
-        first: 'Andy',
-        last: 'Warhol',
+        first: 'Admin',
+        last: 'RideSVP',
       },
     },
     roles: ['admin'],
