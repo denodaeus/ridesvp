@@ -1,4 +1,4 @@
-### Pup
+### RideSVP
 The Ultimate Boilerplate for Products.
 
 [Read the Documentation](https://cleverbeagle.com/pup)

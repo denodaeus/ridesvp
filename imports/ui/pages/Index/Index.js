@@ -78,7 +78,7 @@ const Index = () => (
       src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
       alt="Clever Beagle"
     />
-    <h1>Pup</h1>
+    <h1>RideSVP</h1>
     <p>A boilerplate for products.</p>
     <div>
       <Button href="http://cleverbeagle.com/pup">Read the Docs</Button>

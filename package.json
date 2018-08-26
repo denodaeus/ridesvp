@@ -1,5 +1,5 @@
 {
-  "name": "pup",
+  "name": "ridesvp",
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
