@@ -37,8 +37,8 @@ seeder(Meteor.users, {
   model(index, faker) {
     const userCount = index + 1;
     return {
-      email: `user+${userCount}@test.com`,
-      password: 'password',
+      email: `user+${userCount}@ridesvp.com`,
+      password: 'ridesvp123!',
       profile: {
         name: {
           first: faker.name.firstName(),

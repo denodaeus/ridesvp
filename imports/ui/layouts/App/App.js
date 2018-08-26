@@ -40,6 +40,8 @@ import GDPRConsentModal from '../../components/GDPRConsentModal/GDPRConsentModal
 import { onLogin, onLogout } from '../../../modules/redux/actions';
 import withTrackerSSR from '../../../modules/with-tracker-ssr';
 import getUserName from '../../../modules/get-user-name';
+import HowItWorks from '../../pages/HowItWorks/HowItWorks';
+import CreateATrip from '../../pages/CreateATrip/CreateATrip';
 
 const StyledApp = styled.div`
   visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
@@ -120,6 +122,8 @@ class App extends React.Component {
             <Route name="terms" path="/terms" component={Terms} />
             <Route name="privacy" path="/privacy" component={Privacy} />
             <Route name="examplePage" path="/example-page" component={ExamplePage} />
+            <Route name="how-it-works" path="/how-it-works" component={HowItWorks} />
+            <Route name="create-a-trip" path="/create-a-trip" component={CreateATrip} />
             <Authorized exact allowedRoles={['admin']} path="/admin/users" pathAfterFailure="/" component={AdminUsers} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authorized exact allowedRoles={['admin']} path="/admin/users/settings" pathAfterFailure="/" component={AdminUserSettings} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authorized exact allowedRoles={['admin']} path="/admin/users/:_id" pathAfterFailure="/" component={AdminUser} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />

@@ -30,7 +30,7 @@ const Privacy = () => (
   <div className="Privacy">
     <Page
       title="Privacy Policy"
-      subtitle="Last updated May 29th, 2017"
+      subtitle="Last updated August 26th, 2018"
       content={content}
     />
   </div>
