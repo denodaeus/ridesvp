@@ -1,92 +1,75 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Grid, Row, Col, Image } from 'react-bootstrap';
 import styled from 'styled-components';
-import { lighten, darken } from 'polished';
+// import { lighten, darken } from 'polished';
+import RideListing from '../../components/Ride/RideListing';
+import RideListingFilter from '../../components/Ride/RideListingFilter';
 
 const StyledIndex = styled.div`
-  padding: 20px;
-  background: var(--cb-blue);
-  text-align: center;
-  border-radius: 3px;
-  color: #fff;
+`;
 
+const StyledAd = styled.div`
   img {
-    width: 100px;
-    height: auto;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  p {
-    font-size: 18px;
-    color: ${lighten(0.25, '#4285F4')};
-  }
-
-  > div {
-    display: inline-block;
-    margin: 10px 0 0;
-
-    .btn:first-child {
-      margin-right: 10px;
-    }
-
-    .btn {
-      border: none;
-    }
-  }
-
-  footer {
-    margin: 20px -20px -20px;
-    border-top: 1px solid ${darken(0.1, '#4285F4')};
-    padding: 20px;
-
-    p {
-      font-size: 14px;
-      line-height: 22px;
-      color: ${lighten(0.35, '#4285F4')};
-      margin: 0;
-    }
-
-    p a {
-      color: ${lighten(0.35, '#4285F4')};
-      text-decoration: underline;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    padding: 30px;
-
-    footer {
-      margin: 30px -30px -30px;
-    }
-  }
-
-  @media screen and (min-width: 992px) {
-    padding: 40px;
-
-    footer {
-      margin: 40px -40px -40px;
-    }
+    max-width: 220px;
+    // height: 650px;
   }
 `;
 
 const Index = () => (
   <StyledIndex>
-    <img
-      src="https://s3-us-west-2.amazonaws.com/cleverbeagle-assets/graphics/email-icon.png"
-      alt="Clever Beagle"
-    />
-    <h1>RideSVP</h1>
-    <p>A boilerplate for products.</p>
-    <div>
-      <Button href="http://cleverbeagle.com/pup">Read the Docs</Button>
-      <Button href="https://github.com/cleverbeagle/pup"><i className="fa fa-star" /> Star on GitHub</Button>
-    </div>
-    <footer>
-      <p>Want to ensure that your product sees the light of day? <a href="https://cleverbeagle.com?utm_source=pup&utm_medium=app&utm_campaign=oss">Work with Clever Beagle</a>.</p>
-    </footer>
+    <Grid>
+      <Row className="show-grid">
+        <Col md={2}>
+          <StyledAd>
+            <Image src="/mcd-ad.jpg" />
+          </StyledAd>
+          <div>Ad</div>
+        </Col>
+        <Col md={12}>
+          <Grid fluid>
+            <Row className="show-grid">
+              <Col xs={12} md={3}>
+                <RideListingFilter
+                  from={['Los Angeles', 'San Francisco']}
+                  to={['San Francisco', 'Los Angeles']}
+                  date={['8/27/2018', '8/28/2018', '8/29/2018']}
+                />
+              </Col>
+              <Col xs={12} md={9}>
+                <RideListing
+                  image="/female-avatar-maker.jpg"
+                  name="Penelope Cruzado"
+                  age="27"
+                  car="Honda Civic"
+                  date="9/2/2018"
+                  price="$45.00"
+                  time="9:00 AM PDT"
+                  city="Los Angeles"
+                />
+              </Col>
+            </Row>
+            <Row className="show-grid">
+              <Col xs={12} md={3} />
+              <Col xs={12} md={9}>
+                <RideListing
+                  image="/male-avatar-maker.jpg"
+                  name="Fernando Boulevarde"
+                  age="43"
+                  car="Nissan Leaf"
+                  date="9/16/2018"
+                  price="$32.00"
+                  time="6:00 PM PDT"
+                  city="San Francisco"
+                />
+              </Col>
+            </Row>
+          </Grid>
+        </Col>
+        {/* <Col md={2}>
+          <div>Ad</div>
+        </Col> */}
+      </Row>
+    </Grid>
   </StyledIndex>
 );
 
