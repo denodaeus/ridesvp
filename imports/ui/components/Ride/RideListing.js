@@ -4,38 +4,13 @@ import styled from 'styled-components';
 import { Grid, Row, Col, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 
 const StyledRideListing = styled.div`
-  padding: 40px 0;
-  text-align: center;
-
   img {
     max-width: 220px;
     margin-bottom: 20px;
   }
 
-  i {
-    font-size: 100px;
-    color: var(--gray-lighter);
-    margin-bottom: 20px;
-  }
-
-  h4 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 0;
-  }
-
-  p {
-    font-size: 15px;
-    font-weight: normal;
-    color: #aaa;
-    margin-top: 10px !important;
-    margin-bottom: 0;
-  }
-
-  .btn {
-    margin-top: 20px;
-    margin-bottom: 0 !important;
+  div {
+    padding: 3px;
   }
 `;
 
@@ -46,7 +21,7 @@ const RideListing = ({
     <Grid>
       <Row className="show-grid">
         <Col xs={6} md={3}>
-          {image ? <Image src={image} alt="" responsive /> : ''}
+          {image ? <Image src={image} alt="" /> : ''}
         </Col>
         <Col xs={6} md={3}>
           <ListGroup>

@@ -105,7 +105,7 @@ class App extends React.Component {
           : ''}
         {props.authenticated ? <GDPRConsentModal userId={props.userId} /> : ''}
         <Navigation {...props} {...state} />
-        <Grid>
+        <Grid fluid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
             <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
