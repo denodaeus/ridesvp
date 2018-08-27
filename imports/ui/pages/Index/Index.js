@@ -24,7 +24,7 @@ const Index = () => (
     <Row className="show-grid">
       <Col md={2}>
         <StyledAd>
-          <Image src="/mcd-ad.jpg" />
+          <Image src="/mcd-skyscraper.jpg" />
         </StyledAd>
         <div>Google Ads</div>
       </Col>
