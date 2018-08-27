@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 import styled from 'styled-components';
 // import { lighten, darken } from 'polished';
 import RideListing from '../../components/Ride/RideListing';
@@ -11,7 +11,6 @@ const StyledIndex = styled.div`
 const StyledAd = styled.div`
   img {
     max-width: 220px;
-    // height: 650px;
   }
 
   .padding-0 {
