@@ -28,7 +28,7 @@ const Index = () => (
         </StyledAd>
         <div>Ad</div>
       </Col>
-      <Col md={12}>
+      <Col md={10}>
         <Row className="show-grid">
           <Col xs={8} md={3} className="padding-0">
             <RideListingFilter
