@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "start": "meteor --settings settings-development.json",
-    "staging": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy <staging-subdomain>.meteorapp.com --settings settings-staging.json",
-    "production": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy <production-subdomain>.meteorapp.com --settings settings-production.json",
+    "development": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy ridesvp-node-env.d46qtfqlp7.us-east-1.galaxy.meteorapp.com --settings settings-development.json",
+    "staging": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy ridesvp-node-env.d46qtfqlp7.us-east-1.galaxy.meteorapp.com --settings settings-staging.json",
+    "production": "DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy ridesvp-node-env.d46qtfqlp7.us-east-1.galaxy.meteorapp.com --settings settings-production.json",
     "test": "jest"
   },
   "dependencies": {
