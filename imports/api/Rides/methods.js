@@ -57,9 +57,9 @@ Meteor.methods({
     check(rideId, String);
 
     try {
-      const docToRemove = Rides.findOne(rideId, { fields: { owner: 1 } });
+      const docToRemove = Rides.findOne(rideId, { fields: { riderId: 1 } });
 
-      if (docToRemove.owner === this.userId) {
+      if (docToRemove.riderId === this.userId) {
         return Rides.remove(rideId);
       }
 

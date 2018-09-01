@@ -7,12 +7,12 @@ Meteor.publish('rides', function documents() {
 });
 
 // Note: documents.view is also used when editing an existing document.
-Meteor.publish('rides.view', (documentId) => {
-  check(documentId, String);
-  return Rides.find({ _id: documentId });
+Meteor.publish('rides.view', (rideId) => {
+  check(rideId, String);
+  return Rides.find({ _id: rideId });
 });
 
-Meteor.publish('rides.edit', function documentsEdit(documentId) {
-  check(documentId, String);
-  return Rides.find({ _id: documentId, riderId: this.userId });
+Meteor.publish('rides.edit', function documentsEdit(rideId) {
+  check(rideId, String);
+  return Rides.find({ _id: rideId, riderId: this.userId });
 });

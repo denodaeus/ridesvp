@@ -26,12 +26,12 @@ const handleRemove = (rideId, history) => {
 const renderRide = (ride, match, history) => (ride ? (
   <div className="ViewRide">
     {/* <SEO
-      title={doc.title}
-      description={doc.body}
-      url={`rides/${doc._id}`}
+      title={ride.title}
+      description={ride.description}
+      url={`rides/${ride._id}`}
       contentType="article"
-      published={doc.createdAt}
-      updated={doc.updatedAt}
+      published={ride.createdAt}
+      updated={ride.updatedAt}
       twitter="clvrbgl"
     /> */}
     <div className="page-header clearfix">
@@ -47,11 +47,11 @@ const renderRide = (ride, match, history) => (ride ? (
         </ButtonToolbar>
       ) : ''}
     </div>
-    { ride && ride.body }
+    { ride && ride.description }
   </div>
 ) : <NotFound />);
 
-const ViewRide = ({ ride, match, history }) => (renderRide(ride, match, history));
+const ViewRide = ({ ride, match, history }) => renderRide(ride, match, history);
 
 ViewRide.defaultProps = {
   ride: null,
@@ -69,7 +69,7 @@ export default compose(
     const rideId = match.params._id;
     if (Meteor.isClient) Meteor.subscribe('rides.view', rideId);
     return {
-      doc: Rides.findOne(rideId),
+      ride: Rides.findOne(rideId),
     };
   }),
 )(ViewRide);
