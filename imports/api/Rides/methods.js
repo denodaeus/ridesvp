@@ -16,14 +16,18 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  'rides.insert': function ridesInsert(doc) {
-    check(doc, {
+  'rides.insert': function ridesInsert(ride) {
+    check(ride, {
       title: String,
-      body: String,
+      description: String,
+      riderId: String,
+      startAddress: String,
+      endAddress: String,
+      rate: String,
     });
 
     try {
-      return Rides.insert({ owner: this.userId, ...doc });
+      return Rides.insert({ owner: this.userId, ...ride });
     } catch (exception) {
       handleMethodException(exception);
     }
