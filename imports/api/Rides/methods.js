@@ -32,19 +32,23 @@ Meteor.methods({
       handleMethodException(exception);
     }
   },
-  'rides.update': function ridesUpdate(doc) {
-    check(doc, {
+  'rides.update': function ridesUpdate(ride) {
+    check(ride, {
       _id: String,
+      riderId: String,
       title: String,
-      body: String,
+      description: String,
+      startAddress: String,
+      endAddress: String,
+      rate: String,
     });
 
     try {
-      const rideId = doc._id;
-      const docToUpdate = Rides.findOne(rideId, { fields: { owner: 1 } });
+      const rideId = ride._id;
+      const rideToUpdate = Rides.findOne(rideId, { fields: { riderId: 1 } });
 
-      if (docToUpdate.owner === this.userId) {
-        Rides.update(rideId, { $set: doc });
+      if (rideToUpdate.riderId === this.userId) {
+        Rides.update(rideId, { $set: ride });
         return rideId; // Return _id so we can redirect to ride after update.
       }
 

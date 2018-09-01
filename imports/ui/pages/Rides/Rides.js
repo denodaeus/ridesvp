@@ -42,6 +42,9 @@ const Rides = ({
         <thead>
           <tr>
             <th>Title</th>
+            <th>Start Address</th>
+            <th>End Address</th>
+            <th>Rate</th>
             <th>Last Updated</th>
             <th>Created</th>
             <th />
@@ -50,10 +53,13 @@ const Rides = ({
         </thead>
         <tbody>
           {rides.map(({
-            _id, title, createdAt, updatedAt,
+            _id, title, createdAt, updatedAt, rate, startAddress, endAddress,
           }) => (
             <tr key={_id}>
               <td>{title}</td>
+              <td>{startAddress}</td>
+              <td>{endAddress}</td>
+              <td>{rate}</td>
               <td>{timeago(updatedAt)}</td>
               <td>{monthDayYearAtTime(createdAt)}</td>
               <td>

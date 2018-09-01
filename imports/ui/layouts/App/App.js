@@ -45,6 +45,7 @@ import CreateATrip from '../../pages/CreateATrip/CreateATrip';
 import Rides from '../../pages/Rides/Rides';
 import ViewRide from '../../pages/ViewRide/ViewRide';
 import NewRide from '../../pages/NewRide/NewRide';
+import EditRide from '../../pages/EditRide/EditRide';
 
 const StyledApp = styled.div`
   visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
@@ -118,6 +119,7 @@ class App extends React.Component {
             <Route exact path="/documents/:_id" component={ViewDocument} />
             <Route exact path="/rides/:_id" component={ViewRide} />
             <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/rides/:_id/edit" component={EditRide} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Public path="/signup" component={Signup} {...props} {...state} />
             <Public path="/login" component={Login} {...props} {...state} />
