@@ -7,59 +7,65 @@ import handleMethodException from '../../modules/handle-method-exception';
 import rateLimit from '../../modules/rate-limit';
 
 Meteor.methods({
-  'trips.findOne': function tripsFindOne(documentId) {
-    check(documentId, Match.OneOf(String, undefined));
+  'trips.findOne': function tripsFindOne(tripId) {
+    check(tripId, Match.OneOf(String, undefined));
 
     try {
-      return Trips.findOne(documentId);
+      return Trips.findOne(tripId);
     } catch (exception) {
       handleMethodException(exception);
     }
   },
-  'trips.insert': function tripsInsert(doc) {
-    check(doc, {
+  'trips.insert': function tripsInsert(trip) {
+    check(trip, {
       title: String,
-      body: String,
+      description: String,
+      startLocation: String,
+      endLocation: String,
+      numberOfSeats: Number,
+      rate: String,
+      owner: String,
+      state: String,
     });
 
     try {
-      return Trips.insert({ owner: this.userId, ...doc });
+      return Trips.insert({ owner: this.userId, ...trip });
     } catch (exception) {
       handleMethodException(exception);
     }
   },
-  'trips.update': function tripsUpdate(doc) {
-    check(doc, {
+  'trips.update': function tripsUpdate(trip) {
+    check(trip, {
       _id: String,
       title: String,
       body: String,
     });
 
     try {
-      const documentId = doc._id;
-      const docToUpdate = Trips.findOne(documentId, { fields: { owner: 1 } });
+      const tripId = trip._id;
+      const tripToUpdate = Trips.findOne(tripId, { fields: { owner: 1 } });
 
-      if (docToUpdate.owner === this.userId) {
-        Trips.update(documentId, { $set: doc });
-        return documentId; // Return _id so we can redirect to document after update.
+      if (tripToUpdate.owner === this.userId) {
+        Trips.update(tripId, { $set: trip });
+        return tripId; // Return _id so we can redirect to trip after update.
       }
 
-      throw new Meteor.Error('403', 'Sorry, pup. You\'re not allowed to edit this document.');
+      throw new Meteor.Error('403', 'Sorry, pup. You\'re not allowed to edit this trip.');
     } catch (exception) {
       handleMethodException(exception);
     }
   },
-  'documents.remove': function tripsRemove(tripId) {
+  'trips.remove': function tripsRemove(tripId) {
     check(tripId, String);
 
     try {
-      const docToRemove = Trips.findOne(tripId, { fields: { owner: 1 } });
+      const tripToRemove = Trips.findOne(tripId, { fields: { owner: 1 } });
 
-      if (docToRemove.owner === this.userId) {
+      if (tripToRemove.owner === this.userId) {
         return Trips.remove(tripId);
       }
 
-      throw new Meteor.Error('403', 'Sorry, pup. You\'re not allowed to delete this document.');
+      throw new Meteor.Error('403', 'Sorry, pup. You\'re not allowed to delete this trip.');
     } catch (exception) {
       handleMethodException(exception);
     }

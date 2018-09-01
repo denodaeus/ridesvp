@@ -30,6 +30,14 @@ Trips.schema = new SimpleSchema({
       if (this.isInsert) return (new Date()).toISOString();
     },
   },
+  description: {
+    type: String,
+    label: 'Description for this trip',
+  },
+  numberOfSeats: {
+    type: Number,
+    label: 'Number of total seats for this trip',
+  },
   updatedAt: {
     type: String,
     label: 'The date this document was last updated.',
@@ -38,24 +46,23 @@ Trips.schema = new SimpleSchema({
     },
   },
   startLocation: {
-    type: Object,
+    type: String,
     label: 'Where this trip started or is scheduled to start',
   },
   state: {
     type: String,
     label: 'One of: scheduled, inProgress, paused, completed',
+    autoValue() {
+      if (this.isInsert) return 'scheduled';
+    },
   },
   endLocation: {
-    type: Object,
+    type: String,
     label: 'Where this trip ended or is scheduled to end',
   },
   title: {
     type: String,
     label: 'The title of the document.',
-  },
-  body: {
-    type: String,
-    label: 'The body of the document.',
   },
   rideIds: {
     type: Array,
@@ -73,6 +80,7 @@ Trips.schema = new SimpleSchema({
   ratings: {
     type: Array,
     label: 'Aggregate ratings of this trip',
+    required: false,
   },
   'ratings.$': {
     type: Object,

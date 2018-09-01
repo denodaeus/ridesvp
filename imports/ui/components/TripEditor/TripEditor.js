@@ -27,6 +27,12 @@ class TripEditor extends React.Component {
         rate: {
           required: true,
         },
+        numberOfSeats: {
+          required: true,
+        },
+        state: {
+          required: false,
+        },
       },
       messages: {
         title: {
@@ -35,14 +41,20 @@ class TripEditor extends React.Component {
         description: {
           required: 'Body required.',
         },
-        startAddress: {
+        startLocation: {
           required: 'Start address required..',
         },
-        endAddress: {
+        endLocation: {
           required: 'End address required.',
         },
         rate: {
           required: 'Rate for trip required.',
+        },
+        numberOfSeats: {
+          required: 'Number of seats required',
+        },
+        state: {
+          required: 'Current status of this trip',
         },
       },
       submitHandler() { component.handleSubmit(component.form); },
@@ -57,10 +69,12 @@ class TripEditor extends React.Component {
     const trip = {
       title: form.title.value.trim(),
       description: form.description.value.trim(),
-      triprId: Meteor.userId(),
-      startAddress: form.startAddress.value.trim(),
-      endAddress: form.endAddress.value.trim(),
+      owner: Meteor.userId(),
+      startLocation: form.startLocation.value.trim(),
+      endLocation: form.endLocation.value.trim(),
       rate: form.rate.value.trim(),
+      numberOfSeats: parseInt(form.numberOfSeats.value.trim(), 10),
+      state: form.state.value.trim() || 'scheduled',
     };
 
     if (existingTrip) trip._id = existingTrip;
@@ -104,7 +118,7 @@ class TripEditor extends React.Component {
           <ControlLabel>Start Address</ControlLabel>
           <textarea
             className="form-control"
-            name="startAddress"
+            name="startLocation"
             defaultValue={trip && trip.startAddress}
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
           />
@@ -113,7 +127,7 @@ class TripEditor extends React.Component {
           <ControlLabel>End Address</ControlLabel>
           <textarea
             className="form-control"
-            name="endAddress"
+            name="endLocation"
             defaultValue={trip && trip.endAddress}
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
           />
@@ -125,6 +139,24 @@ class TripEditor extends React.Component {
             name="rate"
             defaultValue={trip && trip.rate}
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Seats</ControlLabel>
+          <textarea
+            className="form-control"
+            name="numberOfSeats"
+            defaultValue={trip && trip.numberOfSeats}
+            placeholder="1"
+          />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Trip Status</ControlLabel>
+          <textarea
+            className="form-control"
+            name="state"
+            defaultValue={trip && trip.state}
+            placeholder="scheduled"
           />
         </FormGroup>
         <Button type="submit" bsStyle="success">
