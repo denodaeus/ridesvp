@@ -10,3 +10,9 @@ import '../../api/OAuth/server/methods';
 
 import '../../api/Users/server/methods';
 import '../../api/Users/server/publications';
+
+import '../../api/Rides/server/indexes';
+import '../../api/Rides/server/publications';
+
+import '../../api/Trips/server/indexes';
+import '../../api/Trips/server/publications';

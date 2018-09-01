@@ -51,7 +51,7 @@ const RideListingFilter = ({
         </Col>
         <Col sm={10}>
           <FormControl componentClass="select" placeholder="select">
-            { _.map(from, f => <option value={f}>{f}</option>) }
+            { _.map(from, f => <option key={f} value={f}>{f}</option>) }
           </FormControl>
         </Col>
       </FormGroup>
@@ -61,7 +61,7 @@ const RideListingFilter = ({
         </Col>
         <Col sm={10}>
           <FormControl componentClass="select" placeholder="select">
-            { _.map(to, t => <option value={t}>{t}</option>) }
+            { _.map(to, t => <option key={t} value={t}>{t}</option>) }
           </FormControl>
         </Col>
       </FormGroup>
@@ -71,7 +71,7 @@ const RideListingFilter = ({
         </Col>
         <Col sm={10}>
           <FormControl componentClass="select" placeholder="select">
-            { _.map(date, d => <option value={d}>{d}</option>) }
+            { _.map(date, d => <option key={d} value={d}>{d}</option>) }
           </FormControl>
         </Col>
       </FormGroup>
