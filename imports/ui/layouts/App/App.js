@@ -42,6 +42,7 @@ import withTrackerSSR from '../../../modules/with-tracker-ssr';
 import getUserName from '../../../modules/get-user-name';
 import HowItWorks from '../../pages/HowItWorks/HowItWorks';
 import CreateATrip from '../../pages/CreateATrip/CreateATrip';
+import Rides from '../../pages/Rides/Rides';
 
 const StyledApp = styled.div`
   visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
@@ -110,6 +111,7 @@ class App extends React.Component {
             <Route exact name="index" path="/" component={Index} />
             <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/rides" component={Rides} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route exact path="/documents/:_id" component={ViewDocument} />
             <Authenticated exact path="/documents/:_id/edit" component={EditDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />

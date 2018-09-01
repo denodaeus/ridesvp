@@ -6,12 +6,12 @@ import styled from 'styled-components';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
-import DocumentsCollection from '../../../api/Documents/Documents';
+import RidesCollection from '../../../api/Rides/Rides';
 import { timeago, monthDayYearAtTime } from '../../../modules/dates';
 import Loading from '../../components/Loading/Loading';
 import BlankState from '../../components/BlankState/BlankState';
 
-const StyledDocuments = styled.div`
+const StyledRides = styled.div`
   table tbody tr td {
     vertical-align: middle;
   }
@@ -19,25 +19,25 @@ const StyledDocuments = styled.div`
 
 const handleRemove = (documentId) => {
   if (confirm('Are you sure? This is permanent!')) {
-    Meteor.call('documents.remove', documentId, (error) => {
+    Meteor.call('rides.remove', documentId, (error) => {
       if (error) {
         Bert.alert(error.reason, 'danger');
       } else {
-        Bert.alert('Document deleted!', 'success');
+        Bert.alert('Ride deleted!', 'success');
       }
     });
   }
 };
 
-const Documents = ({
-  loading, documents, match, history,
+const Rides = ({
+  loading, rides, match, history,
 }) => (!loading ? (
-  <StyledDocuments>
+  <StyledRides>
     <div className="page-header clearfix">
-      <h4 className="pull-left">Documents</h4>
-      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Document</Link>
+      <h4 className="pull-left">Rides</h4>
+      <Link className="btn btn-success pull-right" to={`${match.url}/new`}>Add Ride</Link>
     </div>
-    {documents.length ?
+    {rides.length ?
       <Table responsive>
         <thead>
           <tr>
@@ -49,7 +49,7 @@ const Documents = ({
           </tr>
         </thead>
         <tbody>
-          {documents.map(({
+          {rides.map(({
             _id, title, createdAt, updatedAt,
           }) => (
             <tr key={_id}>
@@ -79,28 +79,28 @@ const Documents = ({
         </tbody>
       </Table> : <BlankState
         icon={{ style: 'solid', symbol: 'file-alt' }}
-        title="You're plum out of documents, friend!"
-        subtitle="Add your first document by clicking the button below."
+        title="You're plum out of rides, friend!"
+        subtitle="Add your first ride by clicking the button below."
         action={{
           style: 'success',
           onClick: () => history.push(`${match.url}/new`),
-          label: 'Create Your First Document',
+          label: 'Create Your First Ride',
         }}
       />}
-  </StyledDocuments>
+  </StyledRides>
 ) : <Loading />);
 
-Documents.propTypes = {
+Rides.propTypes = {
   loading: PropTypes.bool.isRequired,
-  documents: PropTypes.arrayOf(PropTypes.object).isRequired,
+  rides: PropTypes.arrayOf(PropTypes.object).isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
 export default withTracker(() => {
-  const subscription = Meteor.subscribe('documents');
+  const subscription = Meteor.subscribe('rides');
   return {
     loading: !subscription.ready(),
-    documents: DocumentsCollection.find().fetch(),
+    rides: RidesCollection.find().fetch(),
   };
-})(Documents);
+})(Rides);
