@@ -11,6 +11,9 @@ const AuthenticatedNavigation = ({ name, history, userId }) => (
       <LinkContainer to="/rides">
         <NavItem eventKey={1} href="/rides">Rides</NavItem>
       </LinkContainer>
+      <LinkContainer to="/trips">
+        <NavItem eventKey={1} href="/trips">Trips</NavItem>
+      </LinkContainer>
       {Roles.userIsInRole(userId, 'admin') ?
         <NavDropdown eventKey={2} title="Admin" id="admin-nav-dropdown">
           <LinkContainer exact to="/admin/users">
@@ -37,6 +40,7 @@ const AuthenticatedNavigation = ({ name, history, userId }) => (
 AuthenticatedNavigation.propTypes = {
   name: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 export default withRouter(AuthenticatedNavigation);

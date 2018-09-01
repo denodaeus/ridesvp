@@ -38,10 +38,13 @@ import withTrackerSSR from '../../../modules/with-tracker-ssr';
 import getUserName from '../../../modules/get-user-name';
 import HowItWorks from '../../pages/HowItWorks/HowItWorks';
 import CreateATrip from '../../pages/CreateATrip/CreateATrip';
+
 import Rides from '../../pages/Rides/Rides';
 import ViewRide from '../../pages/ViewRide/ViewRide';
 import NewRide from '../../pages/NewRide/NewRide';
 import EditRide from '../../pages/EditRide/EditRide';
+
+import Trips from '../../pages/Trips/Trips';
 
 const StyledApp = styled.div`
   visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
@@ -108,11 +111,17 @@ class App extends React.Component {
         <Grid fluid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
+            <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+
+            {/* <!--Rides--> */}
             <Authenticated exact path="/rides" component={Rides} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/rides/new" component={NewRide} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route exact path="/rides/:_id" component={ViewRide} />
             <Authenticated exact path="/rides/:_id/edit" component={EditRide} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
-            <Authenticated exact path="/profile" component={Profile} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+
+            {/* <!--Trips--> */}
+            <Authenticated exact path="/trips" component={Trips} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+
             <Public path="/signup" component={Signup} {...props} {...state} />
             <Public path="/login" component={Login} {...props} {...state} />
             <Route path="/logout" render={routeProps => <Logout {...routeProps} setAfterLoginPath={setAfterLoginPath} />} {...props} {...state} />
