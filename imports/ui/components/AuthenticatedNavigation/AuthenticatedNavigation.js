@@ -8,9 +8,6 @@ import { Roles } from 'meteor/alanning:roles';
 const AuthenticatedNavigation = ({ name, history, userId }) => (
   <div>
     <Nav>
-      <LinkContainer to="/documents">
-        <NavItem eventKey={1} href="/documents">Documents</NavItem>
-      </LinkContainer>
       <LinkContainer to="/rides">
         <NavItem eventKey={1} href="/rides">Rides</NavItem>
       </LinkContainer>
