@@ -47,6 +47,7 @@ import EditRide from '../../pages/EditRide/EditRide';
 import Trips from '../../pages/Trips/Trips';
 import ViewTrip from '../../pages/ViewTrip/ViewTrip';
 import NewTrip from '../../pages/NewTrip/NewTrip';
+import EditTrip from '../../pages/EditTrip/EditTrip';
 
 const StyledApp = styled.div`
   visibility: ${props => (props.ready && !props.loading ? 'visible' : 'hidden')};
@@ -125,6 +126,7 @@ class App extends React.Component {
             <Authenticated exact path="/trips" component={Trips} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/trips/new" component={NewTrip} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route exact path="/trips/:_id" component={ViewTrip} />
+            <Authenticated exact path="/trips/:_id/edit" component={EditTrip} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
 
             <Public path="/signup" component={Signup} {...props} {...state} />
             <Public path="/login" component={Login} {...props} {...state} />

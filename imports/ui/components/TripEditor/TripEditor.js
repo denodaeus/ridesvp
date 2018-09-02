@@ -18,10 +18,10 @@ class TripEditor extends React.Component {
         description: {
           required: true,
         },
-        startAddress: {
+        startLocation: {
           required: true,
         },
-        endAddress: {
+        endLocation: {
           required: true,
         },
         rate: {
@@ -119,7 +119,7 @@ class TripEditor extends React.Component {
           <textarea
             className="form-control"
             name="startLocation"
-            defaultValue={trip && trip.startAddress}
+            defaultValue={trip && trip.startLocation}
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
           />
         </FormGroup>
@@ -128,7 +128,7 @@ class TripEditor extends React.Component {
           <textarea
             className="form-control"
             name="endLocation"
-            defaultValue={trip && trip.endAddress}
+            defaultValue={trip && trip.endLocation}
             placeholder="Congratulations! Today is your day. You're off to Great Places! You're off and away!"
           />
         </FormGroup>
