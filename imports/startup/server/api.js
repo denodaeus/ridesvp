@@ -16,3 +16,6 @@ import '../../api/Rides/server/publications';
 
 import '../../api/Trips/server/indexes';
 import '../../api/Trips/server/publications';
+
+import '../../api/Vehicles/server/indexes';
+import '../../api/Vehicles/server/publications';

@@ -60,6 +60,27 @@ Trips.schema = new SimpleSchema({
     type: String,
     label: 'Where this trip ended or is scheduled to end',
   },
+  vehicle: {
+    type: Object,
+    label: 'The vehicle utilized for the trip',
+    optional: true,
+  },
+  'vehicle.make': {
+    type: String,
+    label: 'The make of the vehicle',
+  },
+  'vehicle.model': {
+    type: String,
+    label: 'The model of the vehicle for the trip',
+  },
+  'vehicle.year': {
+    type: Number,
+    label: 'The year of the vehicle for the trip',
+  },
+  'vehicle.color': {
+    type: Number,
+    label: 'The color of the vehicle for the trip',
+  },
   title: {
     type: String,
     label: 'The title of the document.',

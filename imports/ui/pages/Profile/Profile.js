@@ -15,8 +15,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import InputHint from '../../components/InputHint/InputHint';
 import AccountPageFooter from '../../components/AccountPageFooter/AccountPageFooter';
 import UserSettings from '../../components/UserSettings/UserSettings';
-import validate from '../../../modules/validate';
+import validate from '../../../modules/validate'; //eslint-disable-line
 import getUserProfile from '../../../modules/get-user-profile';
+import Vehicles from '../../components/Vehicles/Vehicles';
 
 const StyledProfile = styled.div`
   .nav.nav-tabs {
@@ -297,6 +298,10 @@ class Profile extends React.Component {
           <Tab eventKey="settings" title="Settings">
             { /* Manually check the activeTab value to ensure we refetch settings on re-render of UserSettings */ }
             {this.state.activeTab === 'settings' ? <UserSettings /> : ''}
+          </Tab>
+          <Tab eventKey="vehicles" title="Vehicles">
+            { /* Manuall check the activeTab value to ensure we refetch settings on re-render of UserSettings */ }
+            {this.state.activeTab === 'vehicles' ? <Vehicles /> : ''}
           </Tab>
         </Tabs>
       </StyledProfile>
